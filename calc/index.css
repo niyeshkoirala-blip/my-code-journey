@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  min-width: 100dvw;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(102, 126, 234, 0.2);
+  padding: 2rem;
+  gap: 1.5rem;
+  width: 20rem;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.container h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.screen {
+  background: #0f3460;
+  height: 6rem;
+  border: 2px solid rgba(102, 126, 234, 0.5);
+  border-radius: 0.75rem;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.question,
+.answer {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.q,
+.a {
+  width: 100%;
+  text-align: right;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.keyboard {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.key {
+  flex: 1;
+  padding: 1rem;
+  color: #fff;
+  min-height: 3rem;
+  border: 2px solid rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #2d3561 0%, #1e2749 100%);
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+/* Improved hover and active states with smooth transitions */
+.key:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+  border-color: #667eea;
+}
+
+.key:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Distinct styling for operator buttons */
+.operator {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: rgba(102, 126, 234, 0.8);
+  color: #fff;
+}
+
+.operator:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Special styling for clear, backspace, and equals buttons */
+.clear,
+.backspace,
+.percent {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-color: rgba(231, 76, 60, 0.8);
+}
+
+.clear:hover,
+.backspace:hover,
+.percent:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+}
+
+.equals {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  border-color: rgba(39, 174, 96, 0.8);
+  grid-column: span 1;
+}
+
+.equals:hover {
+  background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+  .container {
+    width: 18rem;
+    padding: 1.5rem;
+  }
+
+  .key {
+    font-size: 1rem;
+    min-height: 2.5rem;
+    padding: 0.75rem;
+  }
+
+  .screen {
+    height: 5rem;
+  }
+}

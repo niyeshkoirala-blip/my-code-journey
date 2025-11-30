@@ -1,244 +1,70 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 body {
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  /* Modern gradient background */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: #e5e7eb;
 }
 
-.container {
-  margin: 0px;
-  /* Elevated design with shadow and rounded corners */
-  background-color: white;
-  width: 400px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.container:hover {
-  transform: translateY(-5px);
-}
-
-.line {
-  height: 3px;
-  width: 500px;
-  /* Subtle gradient divider */
-  background: linear-gradient(90deg, transparent, #667eea, transparent);
-}
-
-.computer {
-  background-color: transparent;
-  margin: 0px;
-  height: 200px;
-  width: 200px;
-  /* Added padding and styling */
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#welcome {
-  /* Better typography and styling */
-  font-size: 24px;
-  color: #333;
-  font-weight: 600;
+header {
+  padding: 2rem;
   text-align: center;
 }
 
-.player {
-  z-index: 1;
-  background-color: transparent;
-  margin: 0px;
-  height: 200px;
-  width: 200px;
-  position: relative;
-  overflow: hidden;
+h1 {
+  font-size: 2.5rem;
+  color: #f59e0b;
 }
 
-.control {
-  z-index: 1;
-  width: 100%;
-  height: 120px;
-  /* Better background and padding */
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  border-bottom: 1px solid #e9ecef;
+nav ul {
+  list-style: none;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 15px;
   justify-content: center;
-  align-items: center;
-  padding: 15px;
+  gap: 1rem;
 }
 
-.butt {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  /* Modern button styling with shadow and hover effects */
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  overflow: hidden;
+nav a {
+  color: #22d3ee;
+  text-decoration: none;
 }
 
-.butt:hover {
-  /* Removed smooth scale animation, now just a simple instant effect */
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
 }
 
-.butt:active {
-  transform: scale(0.95);
+.project-card {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-#rock {
-  background-image: url("rock.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.project-card h2 {
+  margin-top: 0;
+  color: #f59e0b;
 }
 
-#paper {
-  background-image: url("paper.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.meta {
+  font-size: 0.9rem;
+  color: #94a3b8;
 }
 
-#scissors {
-  background-image: url("scissors.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.actions a {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #0b1220;
+  color: #e5e7eb;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #1f2937;
 }
 
-.full {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  background-color: transparent;
-}
-
-.result {
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  /* Better result section styling */
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-
-.result h2 {
-  /* White text for contrast on gradient */
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.gayab {
-  display: none;
-}
-
-.rockanimation {
-  background-image: url("rock.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: slideUpBG 0.5s linear forwards;
-  overflow: hidden;
-}
-
-.paperanimation {
-  background-image: url("paper.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: slideUpBG 1s linear forwards;
-  overflow: hidden;
-}
-
-.scissorsanimation {
-  background-image: url("scissors.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: slideUpBG 0.5s linear forwards;
-  overflow: hidden;
-}
-
-.rockanimation,
-.scissorsanimation,
-.paperanimation {
-  position: relative;
-  z-index: 0;
-}
-
-@keyframes slideUpBG {
-  from {
-    bottom: -100%;
-    opacity: 0;
-  }
-  to {
-    bottom: 0;
-    opacity: 1;
-  }
-  /* Changed from smooth ease to linear old-style animation */
-}
-
-.computer-rock,
-.computer-paper,
-.computer-scissors {
-  position: relative;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  animation: slideDownBG 0.5s linear forwards;
-  transform: rotate(180deg);
-}
-
-.computer-rock {
-  background-image: url("rock.png");
-}
-.computer-paper {
-  background-image: url("paper.png");
-}
-.computer-scissors {
-  background-image: url("scissors.png");
-}
-
-@keyframes slideDownBG {
-  from {
-    top: -100%;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #94a3b8;
 }
