@@ -10,7 +10,6 @@ body {
   justify-content: center;
   align-items: center;
   display: flex;
-  /* Modern gradient background */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
@@ -18,7 +17,6 @@ body {
 
 .container {
   margin: 0px;
-  /* Elevated design with shadow and rounded corners */
   background-color: white;
   width: 400px;
   justify-content: center;
@@ -38,7 +36,6 @@ body {
 .line {
   height: 3px;
   width: 500px;
-  /* Subtle gradient divider */
   background: linear-gradient(90deg, transparent, #667eea, transparent);
 }
 
@@ -47,7 +44,6 @@ body {
   margin: 0px;
   height: 200px;
   width: 200px;
-  /* Added padding and styling */
   padding: 20px;
   display: flex;
   align-items: center;
@@ -55,7 +51,6 @@ body {
 }
 
 #welcome {
-  /* Better typography and styling */
   font-size: 24px;
   color: #333;
   font-weight: 600;
@@ -76,7 +71,6 @@ body {
   z-index: 1;
   width: 100%;
   height: 120px;
-  /* Better background and padding */
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
   border-bottom: 1px solid #e9ecef;
@@ -92,7 +86,6 @@ body {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  /* Modern button styling with shadow and hover effects */
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
   transition: all 0.3s ease;
   cursor: pointer;
@@ -101,7 +94,6 @@ body {
 }
 
 .butt:hover {
-  /* Removed smooth scale animation, now just a simple instant effect */
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
@@ -141,7 +133,6 @@ body {
   z-index: 1;
   width: 100%;
   height: auto;
-  /* Better result section styling */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   display: flex;
@@ -154,7 +145,6 @@ body {
 }
 
 .result h2 {
-  /* White text for contrast on gradient */
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -165,12 +155,13 @@ body {
   display: none;
 }
 
+/* Player animations (from bottom up) */
 .rockanimation {
   background-image: url("rock.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  animation: slideUpBG 0.5s linear forwards;
+ 
   overflow: hidden;
 }
 
@@ -179,7 +170,7 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  animation: slideUpBG 1s linear forwards;
+  
   overflow: hidden;
 }
 
@@ -188,7 +179,7 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  animation: slideUpBG 0.5s linear forwards;
+
   overflow: hidden;
 }
 
@@ -197,18 +188,18 @@ body {
 .paperanimation {
   position: relative;
   z-index: 0;
+    animation: slideUpBG 0.3s linear forwards;
 }
 
 @keyframes slideUpBG {
   from {
-    bottom: -100%;
+    transform: translateY(100%);
     opacity: 0;
   }
   to {
-    bottom: 0;
+    transform: translateY(0);
     opacity: 1;
   }
-  /* Changed from smooth ease to linear old-style animation */
 }
 
 .computer-rock,
@@ -218,10 +209,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  animation: slideDownBG 0.5s linear forwards;
-  transform: rotate(180deg);
+  animation: slideDownBG 0.3s linear forwards;
 }
-
 .computer-rock {
   background-image: url("rock.png");
 }
@@ -231,14 +220,103 @@ body {
 .computer-scissors {
   background-image: url("scissors.png");
 }
-
 @keyframes slideDownBG {
   from {
-    top: -100%;
+    transform: translateY(-100%) rotate(180deg); /* start above, upside down */
     opacity: 0;
   }
   to {
-    top: 0;
+    transform: translateY(0) rotate(180deg); /* settle in place, still upside down */
     opacity: 1;
+  }
+}
+.round {
+  background-color: red;
+  height: 80px;
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  position: absolute;
+  border: 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInOut 4s ease-in-out 1;
+}
+
+.blur {
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.resultbox {
+  position: fixed;              /* stays centered even if page scrolls */
+  top: 50%;                     /* anchor to vertical center */
+  left: 50%;                    /* anchor to horizontal center */
+  transform: translate(-50%, -50%);
+  height: 220px;
+  width: 320px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  animation: resultboxanime 0.5s ease-in-out forwards;
+  z-index: 999;
+}
+
+.resultbox h1 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.resultbox button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #0072ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.resultbox button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+@keyframes resultboxanime {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+    display: none;
   }
 }
